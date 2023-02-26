@@ -1,32 +1,26 @@
 {
-    "name": "xlsx-write-stream",
-    "version": "1.0.1",
+    "name": "@olympian/xlsx-write-stream",
+    "version": "1.1.0",
     "description": "XLSX stream writer",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "keywords": [
-        "apify",
-        "apifier",
         "xlsx",
         "stream"
     ],
-    "author": {
-        "name": "Apify",
-        "email": "support@apify.com",
-        "url": "https://www.apify.com"
-    },
     "contributors": [
-        "Jaroslav Hejlek <jaroslav@apify.com>"
+        "Jaroslav Hejlek <jaroslav@apify.com>",
+        "Thomas Hege <omega9997@gmail.com"
     ],
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/apify/xlsx-stream"
+        "url": "git+https://github.com/olympian-tech/xlsx-stream"
     },
     "bugs": {
-        "url": "https://github.com/apify/xlsx-stream"
+        "url": "https://github.com/olympian-tech/xlsx-stream"
     },
-    "homepage": "https://github.com/apify/xlsx-stream",
+    "homepage": "https://github.com/olympian-tech/xlsx-stream",
     "files": [
         "dist"
     ],

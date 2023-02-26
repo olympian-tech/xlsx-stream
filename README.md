@@ -10,15 +10,13 @@ XLSX Write Stream does not support formatting, charts, comments and a myriad of
 other [OOXML](https://en.wikipedia.org/wiki/Office_Open_XML) features. It's strictly an CSV replacement.
 
 ## Installation
-
 ```node
-npm i 'xlsx-write-stream'
+npm i '@olympian/xlsx-write-stream'
 ```
 
 ## Example Usage
-
 ```node
-import XLSXTransformStream from 'xlsx-write-stream';
+import XLSXTransformStream from '@olympian/xlsx-write-stream';
 
 // Input stream needs to implement Stream.Readable interface
 // and each chunk should be an array of values (only string, date and number are supported value types)
@@ -28,5 +26,4 @@ inputStream
 ```
 
 ## License
-
-This package is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+This package is available as open source under the terms of the [Apache 2.0 License](https://opensource.org/license/apache-2-0).

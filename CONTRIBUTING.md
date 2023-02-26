@@ -1,7 +1,7 @@
 # Contributing
 
 ## Release process
-Pushing code to the `master` branch releases a `beta` version of the package.
+Pushing code to the `main` branch releases a `beta` version of the package.
 
 `Latest` version of the package is released manually via GitHub Releases.
 

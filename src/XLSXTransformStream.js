@@ -1,6 +1,7 @@
-// NOTICE: Modification of copyright (C) 2023 Olympian Tech
+// NOTICE: Modification of template 2023 Olympian Tech
 import Archiver from 'archiver';
 import { Transform } from 'stream';
+
 import XLSXRowTransform from './XLSXRowTransform';
 import * as defaultTemplates from './templates';
 

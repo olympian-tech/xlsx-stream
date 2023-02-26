@@ -1,5 +1,6 @@
 // NOTICE: Modifications copyright (C) 2023 Olympian Tech
 import { Transform } from 'stream';
+import * as defaultTemplates from './templates';
 
 /** Class representing a XLSX Row transformation from array to Row. Also adds the necessary XLSX header and footer. */
 export default class XLSXRowTransform extends Transform {
@@ -7,7 +8,7 @@ export default class XLSXRowTransform extends Transform {
         super({ objectMode: true });
         this.rowCount = 0;
         this.shouldFormat = shouldFormat;
-        this.templates = templates;
+        this.templates = Object.assign({}, defaultTemplates, templates);
         this.push(this.templates.SheetHeader);
     }
     /**

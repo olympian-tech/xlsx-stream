@@ -1,7 +1,8 @@
+// NOTICE: Modification of copyright (C) 2023 Olympian Tech
 import Archiver from 'archiver';
 import { Transform } from 'stream';
 import XLSXRowTransform from './XLSXRowTransform';
-import * as templates from './templates';
+import * as defaultTemplates from './templates';
 
 /** Class representing a XLSX Transform Stream */
 export default class XLSXTransformStream extends Transform {
@@ -9,12 +10,15 @@ export default class XLSXTransformStream extends Transform {
      * Create a new Stream
      * @param options {Object}
      * @param options.shouldFormat {Boolean} - If set to true writer is formatting cells with numbers and dates
+     * @param options.rowTransformer {XLSXRowTransform} - Instance of XLSXRowTransform to use
+     * @param options.templates {Object} - Alternative templates to use
      */
     constructor(options = {}) {
         super({ objectMode: true });
         this.options = options;
+        this.templates = Object.assign({}, defaultTemplates, this.options.templates || {});
         this.initializeArchiver();
-        this.rowTransform = new XLSXRowTransform(this.options.shouldFormat);
+        this.rowTransform = this.options.rowTransformer || new XLSXRowTransform(this.options.shouldFormat, this.templates);
 
         this.zip.append(this.rowTransform, {
             name: 'xl/worksheets/sheet1.xml',
@@ -32,23 +36,23 @@ export default class XLSXTransformStream extends Transform {
 
         this.zip.catchEarlyExitAttached = true;
 
-        this.zip.append(templates.ContentTypes, {
+        this.zip.append(this.templates.ContentTypes, {
             name: '[Content_Types].xml',
         });
 
-        this.zip.append(templates.Rels, {
+        this.zip.append(this.templates.Rels, {
             name: '_rels/.rels',
         });
 
-        this.zip.append(templates.Workbook, {
+        this.zip.append(this.templates.Workbook, {
             name: 'xl/workbook.xml',
         });
 
-        this.zip.append(templates.Styles, {
+        this.zip.append(this.templates.Styles, {
             name: 'xl/styles.xml',
         });
 
-        this.zip.append(templates.WorkbookRels, {
+        this.zip.append(this.templates.WorkbookRels, {
             name: 'xl/_rels/workbook.xml.rels',
         });
 

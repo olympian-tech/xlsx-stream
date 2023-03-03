@@ -13,13 +13,14 @@ export default class XLSXTransformStream extends Transform {
      * @param options.shouldFormat {Boolean} - If set to true writer is formatting cells with numbers and dates
      * @param options.rowTransformer {XLSXRowTransform} - Instance of XLSXRowTransform to use
      * @param options.templates {Object} - Alternative templates to use
+     * @param options.skipRows {Number} - Number of initial rows to skip over
      */
     constructor(options = {}) {
         super({ objectMode: true });
         this.options = options;
         this.templates = Object.assign({}, defaultTemplates, this.options.templates || {});
         this.initializeArchiver();
-        this.rowTransform = this.options.rowTransformer || new XLSXRowTransform(this.options.shouldFormat, this.templates);
+        this.rowTransform = this.options.rowTransformer || new XLSXRowTransform(this.options.shouldFormat, this.templates, this.options.skipRows);
 
         this.zip.append(this.rowTransform, {
             name: 'xl/worksheets/sheet1.xml',

@@ -4,9 +4,9 @@ import * as defaultTemplates from './templates';
 
 /** Class representing a XLSX Row transformation from array to Row. Also adds the necessary XLSX header and footer. */
 export default class XLSXRowTransform extends Transform {
-    constructor(shouldFormat, templates = {}) {
+    constructor(shouldFormat, templates = {}, skipRows = 0) {
         super({ objectMode: true });
-        this.rowCount = 0;
+        this.rowCount = skipRows;
         this.shouldFormat = shouldFormat;
         this.templates = Object.assign({}, defaultTemplates, templates);
         this.push(this.templates.SheetHeader);

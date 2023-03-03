@@ -1,6 +1,6 @@
 {
-    "name": "@olympian/xlsx-write-stream",
-    "version": "1.1.0",
+    "name": "@olympian-tech-group/xlsx-write-stream",
+    "version": "1.2.0",
     "description": "XLSX stream writer",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
